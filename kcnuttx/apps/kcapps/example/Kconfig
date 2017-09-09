@@ -1,0 +1,27 @@
+#!kconfig
+
+config KCAPPS_EXAMPLE
+	bool "This is application example compiled from kcapps/example."
+	default n
+	---help---
+		Enable application residing in "kcapps/example"
+
+if KCAPPS_EXAMPLE
+
+config KCAPPS_EXAMPLE_PROGNAME
+	string "Program name"
+	default "example"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config KCAPPS_EXAMPLE_PRIORITY
+	int "example task priority"
+	default 100
+
+config KCAPPS_EXAMPLE_STACKSIZE
+	int "example stack size"
+	default 2048
+
+endif

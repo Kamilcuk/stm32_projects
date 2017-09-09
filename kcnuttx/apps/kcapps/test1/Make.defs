@@ -1,0 +1,3 @@
+ifeq ($(CONFIG_KCAPPS_TEST1),y)
+CONFIGURED_APPS += kcapps/test1
+endif

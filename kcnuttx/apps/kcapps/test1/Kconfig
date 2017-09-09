@@ -1,0 +1,27 @@
+#!kconfig
+
+config KCAPPS_TEST1
+	bool "This is application test1 compiled from kcapps/test1."
+	default n
+	---help---
+		Enable application residing in "kcapps/test1"
+
+if KCAPPS_TEST1
+
+config KCAPPS_TEST1_PROGNAME
+	string "Program name"
+	default "test1"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config KCAPPS_TEST1_PRIORITY
+	int "test1 task priority"
+	default 100
+
+config KCAPPS_TEST1_STACKSIZE
+	int "test1 stack size"
+	default 2048
+
+endif
