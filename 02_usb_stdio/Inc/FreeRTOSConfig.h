@@ -94,16 +94,15 @@
 #endif
 
 #define configUSE_PREEMPTION                     1
-#define configSUPPORT_STATIC_ALLOCATION          1
+#define configSUPPORT_STATIC_ALLOCATION          0
 #define configSUPPORT_DYNAMIC_ALLOCATION         1
 #define configUSE_IDLE_HOOK                      0
 #define configUSE_TICK_HOOK                      0
 #define configCPU_CLOCK_HZ                       ( SystemCoreClock )
 #define configTICK_RATE_HZ                       ((TickType_t)1000)
 #define configMAX_PRIORITIES                     ( 7 )
-#define configMINIMAL_STACK_SIZE                 ((uint16_t)128)
-#define configTOTAL_HEAP_SIZE                    ((size_t)3072)
-#define configMAX_TASK_NAME_LEN                  ( 2 )
+#define configMINIMAL_STACK_SIZE                 ((uint16_t)256)
+#define configMAX_TASK_NAME_LEN                  ( 6 )
 #define configUSE_16_BIT_TICKS                   0
 #define configUSE_MUTEXES                        1
 #define configQUEUE_REGISTRY_SIZE                8
@@ -111,7 +110,7 @@
 
 /* Co-routine definitions. */
 #define configUSE_CO_ROUTINES                    0
-#define configMAX_CO_ROUTINE_PRIORITIES          ( 2 )
+#define configMAX_CO_ROUTINE_PRIORITIES          ( 0 )
 
 /* Set the following definitions to 1 to include the API function, or zero
 to exclude the API function. */

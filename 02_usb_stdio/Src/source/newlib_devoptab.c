@@ -19,7 +19,7 @@ const devoptab_t devoptab_list[] = {
 	{"stdout",            NULL,  stdout_write_r},
 	{"stderr",            NULL,  stderr_write_r},
 
-	{"usb_cdc", USB_CDC_read_r, USB_CDC_write_r},
+	{"usb_cdc", USB_CDC_read_r, USB_CDC_write_r, USB_CDC_open_r, USB_CDC_close_r, },
 
 	{0},
 };
