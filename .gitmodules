@@ -1,3 +1,3 @@
 [submodule "STM32Cube_FW_F1"]
-	path = STM32Cube_FW_F1
+	path = cube_projects/STM32Cube_FW_F1
 	url = git@github.com:Kamilcuk/STM32Cube_FW_F1
