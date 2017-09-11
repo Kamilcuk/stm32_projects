@@ -21,8 +21,11 @@ EOF
 }
 
 
-config_get() { local key=$1       ; shift  ; sed -n -e '/^[# ]\?'"$key"'[ =]/p'              "$@"; }
-config_set() { local key=$1 val=$2; shift 2; sed    -e '/^[# ]\?'"$key"'[ =]/s/.*/'"$val"'/' "$@"; }
+config_get() { local key=$1       ; shift  ; 
+	sed -n -e '/^\(# \)\?'"$key"'[ =]/p'              "$@"; }
+config_set() { local key=$1 val=$(sed -e 's/\([\/\]\)/\\\1/g' <<<"$2"); shift 2; 
+	sed    -e '/^\(# \)\?'"$key"'[ =]/s/.*/'"$val"'/' "$@"; }
+
 config_set_safe() {
         local file="$1" key="$2" val="$3"
         if [ "$file" != "-" ]; then
@@ -64,13 +67,24 @@ CONFIG_VAR=dont touch
 CONFIG_VAR1=10
 CONFIG_VAR2=1
 # CONFIG_VAR3 is not set"
+		"$0 CONFIG_VAR3 XX\"" "# CONFIG_VAR12 is not set
+CONFIG_VAR=dont touch
+CONFIG_VAR1=0
+CONFIG_VAR2=1
+CONFIG_VAR3=XX\""
+		"$0 CONFIG_VAR3 \"\/\\\\*\"" "# CONFIG_VAR12 is not set
+CONFIG_VAR=dont touch
+CONFIG_VAR1=0
+CONFIG_VAR2=1
+CONFIG_VAR3=\"\/\\\\*\""
+
 	)
 	for ((i=0;i<${#tests[@]};i+=2)); do
  		test=${tests[$i]}
  		exp_result=${tests[$((i+1))]}
 
 		echo "+ $test <<<\"\$config\""
-		result=$($test <<<"$config" | tee /dev/stderr)
+		result="$($test <<<"$config" | tee /dev/stderr)"
 
 		if [ "$exp_result" != "$result" ]; then
 			echo "ERROR test=\"$test\" exp_result=\"$exp_result\""
