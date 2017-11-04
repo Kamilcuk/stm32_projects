@@ -4,3 +4,7 @@
 [submodule "nuttx/apps"]
 	path = nuttx/apps
 	url = https://bitbucket.org/nuttx/apps
+[submodule "src/STM32Cube_FW_F1"]
+	path = src/STM32Cube_FW_F1
+	url = git@github.com:Kamilcuk/STM32Cube_FW_F1
+	branch = Cfiles_only

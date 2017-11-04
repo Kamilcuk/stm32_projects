@@ -1,3 +1,0 @@
-
-include $(wildcard kcapps/*/Make.defs)
-
